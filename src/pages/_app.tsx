@@ -6,6 +6,7 @@ import Head from "next/head";
 import defaultSEOConfig from "../../next-seo.config";
 import theme from "../theme";
 
+import { PokemonProvider } from "@/components/provider";
 import ComponentWrapper from "@/components/wrapper/ContainerWrapper";
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -18,9 +19,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
       </Head>
       <DefaultSeo {...defaultSEOConfig} />
-      <ComponentWrapper>
-        <Component {...pageProps} />
-      </ComponentWrapper>
+      <PokemonProvider>
+        <ComponentWrapper>
+          <Component {...pageProps} />
+        </ComponentWrapper>
+      </PokemonProvider>
     </ChakraProvider>
   );
 }
