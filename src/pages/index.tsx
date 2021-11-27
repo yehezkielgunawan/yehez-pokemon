@@ -1,7 +1,7 @@
 import { Heading } from "@chakra-ui/react";
 import React from "react";
 
-import Main from "components/wrapper/Main";
+import Main from "@/components/wrapper/Main";
 
 const Index = () => {
   return (

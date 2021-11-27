@@ -3,10 +3,10 @@ import { DefaultSeo } from "next-seo";
 import { AppProps } from "next/app";
 import Head from "next/head";
 
-import ComponentWrapper from "components/wrapper/ContainerWrapper";
-
 import defaultSEOConfig from "../../next-seo.config";
 import theme from "../theme";
+
+import ComponentWrapper from "@/components/wrapper/ContainerWrapper";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
