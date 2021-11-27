@@ -1,4 +1,5 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode } from "react";
+import createPersistedState from "use-persisted-state";
 
 import { PokemonContextType, SingleCapturedPokemon } from "./types";
 
@@ -22,7 +23,8 @@ type PokemonProviderProps = {
 };
 
 export const PokemonProvider = ({ children }: PokemonProviderProps) => {
-  const [collectedList, setCollectedList] = useState<
+  const useFavourite = createPersistedState("favoritePokemons");
+  const [collectedList, setCollectedList] = useFavourite<
     Array<SingleCapturedPokemon>
   >([]);
 
