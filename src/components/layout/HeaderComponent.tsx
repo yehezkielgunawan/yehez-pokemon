@@ -1,16 +1,14 @@
 import { useColorMode } from "@chakra-ui/color-mode";
 import { Box, Flex, Text } from "@chakra-ui/layout";
-import { Button } from "@chakra-ui/react";
+import { Button, Image } from "@chakra-ui/react";
 import React from "react";
 import { FaGithub } from "react-icons/fa";
-
-import { useDesktopWidthCheck } from "functions/helpers/desktopWidthChecker";
 
 import DarkModeSwitch from "./DarkModeSwitch";
 
 const HeaderComponent = () => {
   const { colorMode } = useColorMode();
-  const isDesktopWidth = useDesktopWidthCheck();
+
   return (
     <Box
       justifyContent="start"
@@ -28,14 +26,29 @@ const HeaderComponent = () => {
         align="center"
         maxW="48rem"
         mx="auto"
-        px={isDesktopWidth ? 1 : 3}
+        px={[3, 1]}
       >
-        <Text as="a" href="/" fontSize="lg">
-          <b>yehez-nextjs-chakra-starter</b>
-        </Text>
+        <Flex gridGap={2} align="center">
+          <Image
+            alt="pokeball"
+            src="https://image.flaticon.com/icons/png/512/1068/1068780.png"
+            w={["20px", "30px"]}
+            h={["20px", "30px"]}
+          />
+          <Text as="a" href="/" fontSize="lg">
+            <b>Yehez-Pokemon</b>
+          </Text>
+        </Flex>
 
         <Flex gridGap={3} align="center">
-          <Button leftIcon={<FaGithub />} variant="ghost" size="sm">
+          <Button
+            as="a"
+            target="_blank"
+            href="https://github.com/yehezkielgunawan/yehez-pokemon"
+            leftIcon={<FaGithub />}
+            variant="ghost"
+            size="sm"
+          >
             Open in Github
           </Button>
 
