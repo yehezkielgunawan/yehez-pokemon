@@ -1,4 +1,4 @@
-import { createContext, ReactNode } from "react";
+import { createContext, ReactNode, useContext } from "react";
 import createPersistedState from "use-persisted-state";
 
 import { PokemonContextType, SingleCapturedPokemon } from "./types";
@@ -17,6 +17,10 @@ export const PokemonContext = createContext<PokemonContextType>({
     return;
   },
 });
+
+export const usePokemonContext = () => {
+  return useContext(PokemonContext);
+};
 
 type PokemonProviderProps = {
   children: ReactNode;
