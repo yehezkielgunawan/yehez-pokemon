@@ -12,21 +12,22 @@ const HeaderComponent = () => {
   return (
     <Box
       justifyContent="start"
-      bg={colorMode === "light" ? "white" : "gray.700"}
       position="fixed"
       width="100%"
-      opacity="0.95"
+      opacity="0.9"
       top={0}
       zIndex={5}
       transition="0.3s ease-out"
     >
       <Flex
+        bg={colorMode === "light" ? "blue.100" : "blue.700"}
         justifyContent="space-between"
         py={2}
         align="center"
         maxW="48rem"
         mx="auto"
-        px={[3, 1]}
+        px={[4, 2]}
+        borderBottomRadius={10}
       >
         <Flex gridGap={2} align="center">
           <Image
