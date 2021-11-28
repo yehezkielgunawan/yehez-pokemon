@@ -1,4 +1,13 @@
-import { Heading, SimpleGrid, Image, Center } from "@chakra-ui/react";
+import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
+import {
+  Heading,
+  SimpleGrid,
+  Image,
+  Center,
+  Flex,
+  IconButton,
+} from "@chakra-ui/react";
+import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useState } from "react";
 
 import MotionBox from "@/components/motion/MotionBox";
@@ -10,21 +19,62 @@ import { PokemonList } from "@/functions/services/types";
 
 const Index = () => {
   const [pokemonList, setPokemonList] = useState<PokemonList>();
+  const [offset, setOffset] = useState<number>(0);
+  const router = useRouter();
 
-  const getPokemons = async (limit?: number, offset?: number) => {
-    return await getPokemonList(limit, offset).then((res: PokemonList) =>
-      setPokemonList(res)
-    );
+  const fetchPokemons = async (offset?: number) => {
+    return await getPokemonList(offset).then((res: PokemonList) => {
+      setPokemonList(res);
+    });
+  };
+
+  const nextPage = () => {
+    setOffset((offsetState) => {
+      offsetState += 20;
+      router.push(`?offset=${offsetState}`);
+      return offsetState;
+    });
+  };
+
+  const prevPage = () => {
+    setOffset((offsetState) => {
+      if (offsetState < 20) {
+        offsetState = 0;
+      } else {
+        offsetState -= 20;
+      }
+      router.push(`?offset=${offsetState}`);
+      return offsetState;
+    });
   };
 
   useEffect(() => {
-    getPokemons();
-  }, []);
+    setOffset(Number(router.query.offset));
+    fetchPokemons(Number(router.query.offset));
+  }, [router.query.offset, offset]);
 
   return (
     <Main>
       <OwnedPokemonBox />
-      <Heading as="h2">Pokedex</Heading>
+      <Flex align="center" justify="space-between">
+        <Heading as="h2">Pokedex</Heading>
+      </Flex>
+      <Flex gridGap={3} align="center" justify="space-between">
+        <IconButton
+          w="100%"
+          aria-label="prevPage"
+          icon={<ChevronLeftIcon />}
+          onClick={() => prevPage()}
+          disabled={!pokemonList?.previous}
+        />
+        <IconButton
+          w="100%"
+          aria-label="nextPage"
+          icon={<ChevronRightIcon />}
+          onClick={() => nextPage()}
+          disabled={!pokemonList?.next}
+        />
+      </Flex>
       {pokemonList ? (
         <SimpleGrid columns={[1, 2]} spacing={3}>
           {pokemonList.results.map((pokemon, index) => {
@@ -52,6 +102,22 @@ const Index = () => {
           </MotionBox>
         </Center>
       )}
+      <Flex gridGap={3} align="center" justify="space-between">
+        <IconButton
+          w="100%"
+          aria-label="prevPage"
+          icon={<ChevronLeftIcon />}
+          onClick={() => prevPage()}
+          disabled={!pokemonList?.previous}
+        />
+        <IconButton
+          w="100%"
+          aria-label="nextPage"
+          icon={<ChevronRightIcon />}
+          onClick={() => nextPage()}
+          disabled={!pokemonList?.next}
+        />
+      </Flex>
     </Main>
   );
 };

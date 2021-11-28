@@ -4,12 +4,9 @@ import { DetailPokemonResType, PokemonList } from "./types";
 
 import { baseURL } from "@/constants/base";
 
-export const getPokemonList = async (
-  limit: number = 20,
-  offset: number = 0
-) => {
+export const getPokemonList = async (offset: number = 0) => {
   return await axios
-    .get(`${baseURL}/pokemon?limit=${limit}&offset=${offset}`)
+    .get(`${baseURL}/pokemon?offset=${offset}&limit=20`)
     .then((res: AxiosResponse<PokemonList>) => res.data);
 };
 
