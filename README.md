@@ -56,7 +56,7 @@ This project is scaffolded using my own starter template [yehez-nextchara-starte
 - Want to catch that pokemon? Click the `catch` button. The pokemon will be stored in your collection.
   ![owned pokemon list](https://res.cloudinary.com/yehez/image/upload/v1638173309/Bobobox/capture_pokemon_vwiljd.png)
 - You can check your captured pokemon list at the Owned Pokemon page (Home => Click `My Pokemon` button).
-- To remove the movie from your favorite movie list, you can click the `Release` button on the Owned Pokemon page or in the pokemon detail page.
+- To release the pokemon from your owned pokemon list, you can click the `Release` button on the Owned Pokemon page or in the pokemon detail page.
   ![Release pokemon](https://res.cloudinary.com/yehez/image/upload/v1638173309/Bobobox/release_pokemon_tvhryv.png)
 
 ## How to run it locally?
