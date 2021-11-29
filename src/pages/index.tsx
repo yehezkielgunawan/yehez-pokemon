@@ -51,7 +51,7 @@ const Index = () => {
       fetchPokemons();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [offset]);
+  }, [router.query.offset, offset]);
 
   return (
     <Main>
