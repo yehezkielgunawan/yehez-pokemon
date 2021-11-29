@@ -80,6 +80,9 @@ export type DetailPokemonResType = {
   game_indices: Array<SingleGameIndices>;
   height: number;
   held_items: Array<SingleHeldItem>;
+  id: number;
+  is_default: boolean;
+  location_area_encounters: string;
   moves: Array<SingleMove>;
   name: string;
   order: number;

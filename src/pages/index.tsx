@@ -1,19 +1,14 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
-import {
-  Heading,
-  SimpleGrid,
-  Image,
-  Center,
-  Flex,
-  IconButton,
-} from "@chakra-ui/react";
+import { Heading, SimpleGrid, Flex, IconButton } from "@chakra-ui/react";
 import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useState } from "react";
 
-import MotionBox from "@/components/motion/MotionBox";
+import { LinkComponent } from "@/components/ui/LinkComponent";
 import OwnedPokemonBox from "@/components/ui/OwnedPokemonBox";
 import PokemonBox from "@/components/ui/PokemonBox";
+import PokemonLoader from "@/components/ui/PokemonLoader";
 import Main from "@/components/wrapper/Main";
+import { getPokemonID } from "@/functions/helpers/getPokemonId";
 import { getPokemonList } from "@/functions/services/fetcher";
 import { PokemonList } from "@/functions/services/types";
 
@@ -84,28 +79,14 @@ const Index = () => {
         <SimpleGrid columns={[1, 2]} spacing={3}>
           {pokemonList.results.map((pokemon, index) => {
             return (
-              <PokemonBox key={index} name={pokemon.name} url={pokemon.url} />
+              <LinkComponent key={index} href={getPokemonID(pokemon.url)}>
+                <PokemonBox name={pokemon.name} url={pokemon.url} />
+              </LinkComponent>
             );
           })}
         </SimpleGrid>
       ) : (
-        <Center>
-          <MotionBox
-            animate={{ y: 40 }}
-            transition={{
-              repeat: Infinity,
-              duration: 0.5,
-              repeatType: "reverse",
-            }}
-          >
-            <Image
-              alt="Pokeball"
-              src="https://image.flaticon.com/icons/png/512/1068/1068780.png"
-              objectFit="contain"
-              w={36}
-            />
-          </MotionBox>
-        </Center>
+        <PokemonLoader />
       )}
       <Flex gridGap={3} align="center" justify="space-between">
         <IconButton
