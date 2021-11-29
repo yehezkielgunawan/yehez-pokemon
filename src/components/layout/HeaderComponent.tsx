@@ -1,6 +1,6 @@
 import { useColorMode } from "@chakra-ui/color-mode";
 import { Box, Flex, Text } from "@chakra-ui/layout";
-import { Button, Image } from "@chakra-ui/react";
+import { Button, IconButton, Image } from "@chakra-ui/react";
 import React from "react";
 import { FaGithub } from "react-icons/fa";
 
@@ -20,7 +20,7 @@ const HeaderComponent = () => {
       transition="0.3s ease-out"
     >
       <Flex
-        bg={colorMode === "light" ? "blue.100" : "blue.700"}
+        bg={colorMode === "light" ? "blue.50" : "blue.700"}
         justifyContent="space-between"
         py={2}
         align="center"
@@ -36,7 +36,7 @@ const HeaderComponent = () => {
             w={["20px", "30px"]}
             h={["20px", "30px"]}
           />
-          <Text as="a" href="/" fontSize="lg">
+          <Text as="a" href="/" fontSize={["sm", "lg"]}>
             <b>Yehez-Pokemon</b>
           </Text>
         </Flex>
@@ -48,10 +48,22 @@ const HeaderComponent = () => {
             href="https://github.com/yehezkielgunawan/yehez-pokemon"
             leftIcon={<FaGithub />}
             variant="ghost"
-            size="sm"
+            size="xs"
+            display={["none", "flex"]}
           >
             Open in Github
           </Button>
+
+          <IconButton
+            as="a"
+            target="_blank"
+            href="https://github.com/yehezkielgunawan/yehez-pokemon"
+            aria-label="git-repo"
+            icon={<FaGithub />}
+            bg={colorMode === "light" ? "gray.200" : "gray.700"}
+            borderRadius="full"
+            display={["flex", "none"]}
+          />
 
           <DarkModeSwitch />
         </Flex>
