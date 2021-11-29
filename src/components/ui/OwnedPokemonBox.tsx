@@ -6,27 +6,31 @@ import { VscTriangleRight } from "react-icons/vsc";
 
 import { usePokemonContext } from "../provider";
 
+import { LinkComponent } from "./LinkComponent";
+
 const OwnedPokemonBox = () => {
   const { colorMode } = useColorMode();
   const { collectedList } = usePokemonContext();
   return (
-    <Flex
-      align="center"
-      justify="space-between"
-      bg={colorMode === "light" ? "orange.300" : "orange.500"}
-      p={4}
-      borderRadius={10}
-    >
-      <Stack spacing={2}>
-        <Heading as="h5" size="lg">
-          My Pokemon
-        </Heading>
-        <Text>
-          Owned: <b>{collectedList.length}</b>
-        </Text>
-      </Stack>
-      <Icon as={VscTriangleRight} />
-    </Flex>
+    <LinkComponent href="/owned">
+      <Flex
+        align="center"
+        justify="space-between"
+        bg={colorMode === "light" ? "orange.300" : "orange.500"}
+        p={4}
+        borderRadius={10}
+      >
+        <Stack spacing={2}>
+          <Heading as="h5" size="lg">
+            My Pokemon
+          </Heading>
+          <Text>
+            Owned: <b>{collectedList.length}</b>
+          </Text>
+        </Stack>
+        <Icon as={VscTriangleRight} />
+      </Flex>
+    </LinkComponent>
   );
 };
 

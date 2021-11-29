@@ -12,13 +12,17 @@ import { Box, Flex, Heading, SimpleGrid, Stack, Text } from "@chakra-ui/layout";
 import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useState } from "react";
 
+import { usePokemonContext } from "@/components/provider";
+import { useAppToast } from "@/components/ui/AppToast";
 import PokemonLoader from "@/components/ui/PokemonLoader";
 import Main from "@/components/wrapper/Main";
 import { getPokemonDetail } from "@/functions/services/fetcher";
 import { DetailPokemonResType } from "@/functions/services/types";
 
 const PokemonDetailsPage = () => {
+  const { collectedList, capturePokemon, releasePokemon } = usePokemonContext();
   const router = useRouter();
+  const toast = useAppToast();
   const { id } = router.query;
   const [pokemonDetail, setPokemonDetail] = useState<DetailPokemonResType>();
 
@@ -30,10 +34,39 @@ const PokemonDetailsPage = () => {
     );
   };
 
+  const catchPokemon = () => {
+    capturePokemon({
+      name: String(pokemonDetail?.name),
+      pokeImg: String(pokemonDetail?.sprites.front_default),
+    });
+    toast({
+      status: "success",
+      title: `${pokemonDetail?.name} has been captured to your pokedex!`,
+    });
+  };
+
+  const release = () => {
+    releasePokemon(String(pokemonDetail?.name));
+    toast({
+      status: "info",
+      title: `${pokemonDetail?.name} has been released!`,
+    });
+  };
+
+  const checkPokemon = () => {
+    return collectedList.some(
+      (pokemon) => pokemon.name === pokemonDetail?.name
+    );
+  };
+
   useEffect(() => {
     id && fetchPokemonDetails(String(id));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
+
+  useEffect(() => {
+    checkPokemon();
+  });
 
   return (
     <Main>
@@ -58,9 +91,23 @@ const PokemonDetailsPage = () => {
               w="100%"
             />
             <Stack alignItems="stretch" spacing={10} w="100%">
-              <Button colorScheme="orange" borderRadius={10}>
-                Catch
-              </Button>
+              {!checkPokemon() ? (
+                <Button
+                  colorScheme="orange"
+                  borderRadius={10}
+                  onClick={() => catchPokemon()}
+                >
+                  Catch
+                </Button>
+              ) : (
+                <Button
+                  colorScheme="teal"
+                  borderRadius={10}
+                  onClick={() => release()}
+                >
+                  Release
+                </Button>
+              )}
               <Stack spacing={2}>
                 <Text fontSize="xl">
                   <b>abilities</b>
