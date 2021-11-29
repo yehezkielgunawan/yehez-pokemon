@@ -1,36 +1,55 @@
+import { Button } from "@chakra-ui/button";
 import { useColorMode } from "@chakra-ui/color-mode";
-import Icon from "@chakra-ui/icon";
-import { Flex, Heading, Stack, Text } from "@chakra-ui/layout";
+import { Image } from "@chakra-ui/image";
+import { Box, Text } from "@chakra-ui/layout";
 import React from "react";
-import { VscTriangleRight } from "react-icons/vsc";
 
 import { usePokemonContext } from "../provider";
 
+import { useAppToast } from "./AppToast";
 import { LinkComponent } from "./LinkComponent";
 
-const OwnedPokemonBox = () => {
+type OwnedPokemonBoxProps = {
+  name: string;
+  imgUrl: string;
+};
+
+const OwnedPokemonBox = ({ name, imgUrl }: OwnedPokemonBoxProps) => {
   const { colorMode } = useColorMode();
-  const { collectedList } = usePokemonContext();
+  const { releasePokemon } = usePokemonContext();
+  const toast = useAppToast();
+
+  const releaseThePokemon = () => {
+    releasePokemon(name);
+    toast({
+      status: "info",
+      title: `${name} has been released!`,
+    });
+  };
+
   return (
-    <LinkComponent href="/owned">
-      <Flex
-        align="center"
-        justify="space-between"
-        bg={colorMode === "light" ? "orange.300" : "orange.500"}
-        p={4}
+    <Box
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      textAlign="center"
+      bg={colorMode === "light" ? "white" : "gray.600"}
+      borderRadius={10}
+      p={[2, 6]}
+      boxShadow={colorMode === "light" ? "dark-lg" : "outline"}
+    >
+      <LinkComponent href={`/${name}`}>
+        <Image alt="pokemon-image" src={imgUrl} />
+        <Text fontSize="lg">{name}</Text>
+      </LinkComponent>
+      <Button
+        colorScheme="purple"
         borderRadius={10}
+        onClick={() => releaseThePokemon()}
       >
-        <Stack spacing={2}>
-          <Heading as="h5" size="lg">
-            My Pokemon
-          </Heading>
-          <Text>
-            Owned: <b>{collectedList.length}</b>
-          </Text>
-        </Stack>
-        <Icon as={VscTriangleRight} />
-      </Flex>
-    </LinkComponent>
+        Release
+      </Button>
+    </Box>
   );
 };
 

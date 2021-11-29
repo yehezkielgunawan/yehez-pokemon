@@ -43,6 +43,7 @@ const PokemonDetailsPage = () => {
       status: "success",
       title: `${pokemonDetail?.name} has been captured to your pokedex!`,
     });
+    router.push("/owned");
   };
 
   const release = () => {
@@ -87,7 +88,7 @@ const PokemonDetailsPage = () => {
           >
             <Image
               alt="pokemon-image"
-              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
+              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonDetail.id}.png`}
               w="100%"
             />
             <Stack alignItems="stretch" spacing={10} w="100%">

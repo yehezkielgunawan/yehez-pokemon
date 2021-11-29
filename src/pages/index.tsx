@@ -4,7 +4,7 @@ import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useState } from "react";
 
 import { LinkComponent } from "@/components/ui/LinkComponent";
-import OwnedPokemonBox from "@/components/ui/OwnedPokemonBox";
+import OwnedPokemonBar from "@/components/ui/OwnedPokemonBar";
 import PokemonBox from "@/components/ui/PokemonBox";
 import PokemonLoader from "@/components/ui/PokemonLoader";
 import Main from "@/components/wrapper/Main";
@@ -55,7 +55,7 @@ const Index = () => {
 
   return (
     <Main>
-      <OwnedPokemonBox />
+      <OwnedPokemonBar />
       <Flex align="center" justify="space-between">
         <Heading as="h2">Pokedex</Heading>
       </Flex>
