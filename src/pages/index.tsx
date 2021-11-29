@@ -49,8 +49,13 @@ const Index = () => {
   };
 
   useEffect(() => {
-    setOffset(Number(router.query.offset));
-    fetchPokemons(Number(router.query.offset));
+    if (Object.keys(router.query).length > 0) {
+      setOffset(Number(router.query.offset));
+      fetchPokemons(Number(router.query.offset));
+    } else {
+      fetchPokemons();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.query.offset, offset]);
 
   return (
