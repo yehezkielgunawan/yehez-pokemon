@@ -14,6 +14,7 @@ type OwnedPokemonBoxProps = {
   imgUrl: string;
 };
 
+// It is to stored the owned pokemon data
 const OwnedPokemonBox = ({ name, imgUrl }: OwnedPokemonBoxProps) => {
   const { colorMode } = useColorMode();
   const { releasePokemon } = usePokemonContext();

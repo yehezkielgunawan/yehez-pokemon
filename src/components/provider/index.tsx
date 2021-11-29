@@ -3,6 +3,8 @@ import createPersistedState from "use-persisted-state";
 
 import { PokemonContextType, SingleCapturedPokemon } from "./types";
 
+
+// I use React Context just to streghten my knowledge with this feature
 export const INITIAL_CAPTURED_POKEMON: SingleCapturedPokemon = {
   name: "",
   pokeImg: "",

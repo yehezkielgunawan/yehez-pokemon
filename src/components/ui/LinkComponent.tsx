@@ -5,6 +5,8 @@ type LinkProps = {
   href: string;
   children: ReactNode;
 };
+
+// Reusable Link Component
 export const LinkComponent = ({ href, children }: LinkProps) => {
   return (
     <NextLink href={href} passHref>

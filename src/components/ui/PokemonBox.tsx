@@ -10,6 +10,7 @@ type PokemonBoxProps = {
   url: string;
 };
 
+// Each fetched pokemon list will be stored here
 const PokemonBox = ({ name, url }: PokemonBoxProps) => {
   const { colorMode } = useColorMode();
   return (

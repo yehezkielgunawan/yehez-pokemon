@@ -8,6 +8,7 @@ import { usePokemonContext } from "../provider";
 
 import { LinkComponent } from "./LinkComponent";
 
+// Just a box which displayed in the home page
 const OwnedPokemonBar = () => {
   const { colorMode } = useColorMode();
   const { collectedList } = usePokemonContext();

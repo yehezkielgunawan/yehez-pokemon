@@ -3,6 +3,7 @@ import React from "react";
 
 import MotionBox from "../motion/MotionBox";
 
+// Just a loader
 const PokemonLoader = () => {
   return (
     <Center>
