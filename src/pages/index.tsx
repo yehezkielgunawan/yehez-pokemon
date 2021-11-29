@@ -51,7 +51,7 @@ const Index = () => {
       fetchPokemons();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.query.offset, offset]);
+  }, [offset]);
 
   return (
     <Main>
@@ -62,14 +62,14 @@ const Index = () => {
       <Flex gridGap={3} align="center" justify="space-between">
         <IconButton
           w="100%"
-          aria-label="prevPage"
+          aria-label="prevPageTop"
           icon={<ChevronLeftIcon />}
           onClick={() => prevPage()}
           disabled={!pokemonList?.previous}
         />
         <IconButton
           w="100%"
-          aria-label="nextPage"
+          aria-label="nextPageTop"
           icon={<ChevronRightIcon />}
           onClick={() => nextPage()}
           disabled={!pokemonList?.next}
@@ -91,14 +91,14 @@ const Index = () => {
       <Flex gridGap={3} align="center" justify="space-between">
         <IconButton
           w="100%"
-          aria-label="prevPage"
+          aria-label="prevPageBottom"
           icon={<ChevronLeftIcon />}
           onClick={() => prevPage()}
           disabled={!pokemonList?.previous}
         />
         <IconButton
           w="100%"
-          aria-label="nextPage"
+          aria-label="nextPageBottom"
           icon={<ChevronRightIcon />}
           onClick={() => nextPage()}
           disabled={!pokemonList?.next}

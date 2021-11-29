@@ -9,6 +9,7 @@ module.exports = {
     "^@/functions/(.*)$": "<rootDir>/src/functions/$1",
     "^@/types/(.*)$": "<rootDir>/src/types/$1",
     "^@/constants/(.*)$": "<rootDir>/src/constants/$1",
+    "^@/pages/(.*)$": "<rootDir>/src/pages/$1",
     /* Handle CSS imports (with CSS modules)
         https://jestjs.io/docs/webpack#mocking-css-modules */
     "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
