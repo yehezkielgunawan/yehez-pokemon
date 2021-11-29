@@ -14,7 +14,7 @@
 
 [How to run it locally?](https://github.com/yehezkielgunawan/yehez-pokemon#how-to-run-it-locally)
 
-[Reference](https://github.com/yehezkielgunawan/yehez-pokemon#references)
+[References](https://github.com/yehezkielgunawan/yehez-pokemon#references)
 
 [Additional Notes](https://github.com/yehezkielgunawan/yehez-pokemon#additional-notes)
 
@@ -33,6 +33,7 @@ This project is scaffolded using my own starter template [yehez-nextchara-starte
 - [Poke API](https://pokeapi.co/) for the pokemon data.
 - [Use State Persistent](https://github.com/donavon/use-persisted-state) to save the captured pokemon in local storage.
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) to make a base unit testing.
+- [Vercel](https://vercel.com/) as my current favorite tool to deploy web apps.
 
 ## ⚡ What's included here?
 
@@ -79,7 +80,7 @@ This project is scaffolded using my own starter template [yehez-nextchara-starte
 
 ## Additional Notes
 
-I have never used Test Driven Development (TDD) technique before. That's why I choose React Testing Library as my testing library and use some elements that I have to understand.
+I have never used Test Driven Development (TDD) technique before. That's why I choose React Testing Library as my testing library and use some elements that I understood.
 
 `src/components` => I put all small or reusable components here.
 
